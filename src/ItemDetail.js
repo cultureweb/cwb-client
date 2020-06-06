@@ -4,8 +4,7 @@ import './App.css';
 function ItemDetail({match}) {
     useEffect(() => {
         fetchItem();
-        console.log({match})
-    }, [])
+    }, []);
     const [item, setItem] = useState({})
     const fetchItem = async() => {
         const response = await fetch(`https://cwb-server.herokuapp.com/api/v1/posts/${match.params.id}`)
