@@ -6,7 +6,7 @@
         "start": "concurrently \"react-scripts start\" \"node index\"",
         "heroku-postbuild": "react-scripts build",
         "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
+        "test": "jest",
         "eject": "react-scripts eject"
     },
     "dependencies": {
