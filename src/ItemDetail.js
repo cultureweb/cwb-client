@@ -4,18 +4,18 @@ import React, { useState, useEffect } from 'react';
 
 function ItemDetail({ match }) {
 
-    let id = match && match && match.params.id ? match.params.id : null;
     const [item, setItem] = useState({})
     
-    const fetchItem = async () => {
-        const response = await fetch(`https://cwb-server.herokuapp.com/api/v1/posts/${id}`)
-        const data = await response.json();
-        setItem(data.item);
-    }
+    
 
     useEffect(() => {  
+        const fetchItem = async () => {
+            const response = await fetch(`https://cwb-server.herokuapp.com/api/v1/posts/${match.params.id}`)
+            const data = await response.json();
+            setItem(data.item);
+        }
         fetchItem();
-    }, []);
+    }, [match]);
     
     if (!item) {
         return "loading...";
