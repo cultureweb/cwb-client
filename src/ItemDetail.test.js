@@ -9,7 +9,7 @@ const renderComponent = (props = {}) =>
             <ItemDetail {...props} />
         </BrowserRouter>
     );
-$.fn.modal = jest.fn();
+
 
 // MOCKS
 //jest.mock("./Api");
