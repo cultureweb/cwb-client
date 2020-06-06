@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react';
 
 function ItemDetail({ match }) {
 
+    
     const [item, setItem] = useState({})
     
     
 
     useEffect(() => {  
+
         const fetchItem = async () => {
             const response = await fetch(`https://cwb-server.herokuapp.com/api/v1/posts/${match.params.id}`)
             const data = await response.json();
