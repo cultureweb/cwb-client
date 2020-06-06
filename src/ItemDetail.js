@@ -8,9 +8,9 @@ function ItemDetail({match}) {
             const data = await response.json();
             setItem(data.item);
 
-        };
+        }
         fetchItem();
-    }, []);
+    }, [match]);
     const [item, setItem] = useState({})
     
     return (
