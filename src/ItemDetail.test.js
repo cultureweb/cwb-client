@@ -22,4 +22,9 @@ describe("<ItemDetail>", () => {
     it('should renders without crashing', () => {
         renderComponent();
     });
-});
+    // it('returns the title of the first post', async () => {
+    //     const title = await fetchItem(); 
+    //     expect(title).toEqual('quidem molestiae enim'); 
+    //     });
+    });
+
