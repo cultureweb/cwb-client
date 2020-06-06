@@ -6,7 +6,7 @@
         "start": "concurrently \"react-scripts start\" \"node index\"",
         "heroku-postbuild": "react-scripts build",
         "build": "react-scripts build",
-        "test": "jest",
+        "test": "react-scripts test --env=jsdom --verbose --watchAll=false",
         "eject": "react-scripts eject"
     },
     "dependencies": {
@@ -21,7 +21,7 @@
     },
     "devDependencies": {
         "concurrently": "^5.2.0",
-        "jest": "^26.0.1"
+        "jest-dom": "^4.0.0"
     },
     "eslintConfig": {
         "extends": "react-app"
