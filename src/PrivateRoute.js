@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         useEffect(() => {
             checkauth();
         }, [])
-        const [isAuth, setIsAuth] = useState(false)
+        const [isAuth, setIsAuth] = useState("")
         const checkauth = async () => {
             const token = localStorage.getItem("token");
             if (!token) {
@@ -23,10 +23,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             };
 
             const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', options);
+          
             const response = await data.json();
             console.log({ response })
             setIsAuth(response.isAuthenticated);
-           
+          
 
         }
 
@@ -42,12 +43,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                     console.log("yes is isAuthenticated")
                     return <Component {...props} />;
                 }
-                else {
-                    return <Redirect to={{ pathname: '/login' }} />
-                }
+                
             }
             }
         />
     );
+   
 };
 export default PrivateRoute;
