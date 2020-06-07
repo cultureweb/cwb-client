@@ -5,6 +5,27 @@ import auth from "./pages/Login/Auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     
+        useEffect(() => {
+            checkauth();
+        }, [])
+        const [isAuth, setIsAuth] = useState(false)
+        const checkauth = async () => {
+            const token = localStorage.getItem("token");
+            const options = {
+                method: 'get',
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": token
+                }
+            };
+
+            const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', options);
+            const response = await data.json();
+            console.log({ response })
+            setItems(response.isAuthenticated);
+        }
+
+
     const bool = auth.isAuthenticated();
     console.log({bool})
    
