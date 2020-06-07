@@ -11,6 +11,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         const [isAuth, setIsAuth] = useState(false)
         const checkauth = async () => {
             const token = localStorage.getItem("token");
+            if (!token) {
+                
+            }
             const options = {
                 method: 'get',
                 headers: {
@@ -23,6 +26,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             const response = await data.json();
             console.log({ response })
             setIsAuth(response.isAuthenticated);
+           
+
         }
 
 
@@ -34,11 +39,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             {...rest}
             render={props => {
                 if (isAuth) {
-                    console.log("if isAuthenticated")
+                    console.log("yes is isAuthenticated")
                     return <Component {...props} />;
                 }
                 else {
-                    // return <Redirect to={{ pathname: '/login' }} />
+                    return <Redirect to={{ pathname: '/login' }} />
                 }
             }
             }
