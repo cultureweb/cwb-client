@@ -5,7 +5,8 @@ import auth from "./pages/Login/Auth";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     
-    console.log("PrivateRoute", auth.isAuthenticated);
+    const bool = auth.isAuthenticated();
+    console.log({bool})
    
     return (
         <Route
