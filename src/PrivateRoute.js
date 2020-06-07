@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmNWY0ZjllZS04ODExLTQyZTgtYTBlMC0yYTJkOTE2YjRhNzMiLCJpYXQiOjE1OTE1Mzg5NjcsImV4cCI6MTU5MTYyNTM2N30.2k9nB7aMmknQnU04K7HAXvsFawBnhvIA9kRcal8Mqnc"
+                    "x-access-token": token
                 }
             });
 
@@ -23,7 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             }
         }
         checkToken();
-    }, [])
+    }, [isAuthenticated])
     
     
     
