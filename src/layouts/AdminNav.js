@@ -10,9 +10,9 @@ function AdminNav() {
         <nav>
             <Link style={navStyle} to="/admin"><h3>Logo</h3></Link>
             <ul className="nav-links">
-                <Link style={navStyle} to="/create"><li>Create</li></Link>
+                <Link style={navStyle} to="/admin/create"><li>Create</li></Link>
                 
-                <Link style={navStyle} to="/edit"><li>Edit</li></Link>
+                <Link style={navStyle} to="/admin/edit"><li>Edit</li></Link>
                 
            </ul>
         </nav>

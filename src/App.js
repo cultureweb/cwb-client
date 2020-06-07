@@ -34,7 +34,8 @@ function App() {
             <Route exact path="/blog" component={Blog} />
             <Route path="/blog/:id" component={ItemDetail} />
             <Route exact path="/login" component={Login} /> 
-            <PrivateRoute path="/admin" component={Admin} />
+          <PrivateRoute exact path="/admin" component={Admin} />
+          <PrivateRoute exact path="/admin/create" component={Admin} />
           </Switch>
       </div>
     </Router>
