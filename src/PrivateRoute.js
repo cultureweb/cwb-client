@@ -22,18 +22,18 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
             const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', options);
             const response = await data.json();
             console.log({ response })
-            setItems(response.isAuthenticated);
+            setIsAuth(response.isAuthenticated);
         }
 
 
-    const bool = auth.isAuthenticated();
-    console.log({bool})
+    // const bool = auth.isAuthenticated();
+    // console.log({bool})
    
     return (
         <Route
             {...rest}
             render={props => {
-                if (auth.isAuthenticated()) {
+                if (isAuthenticated) {
                     console.log("if isAuthenticated")
                     return <Component {...props} />;
                 }
