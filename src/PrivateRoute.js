@@ -7,7 +7,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
     useEffect(() => {
         const checkToken = async () => {
-           
+            const token = localStorage.getItem("token");
+
             const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', {
                 method: "GET",
                 headers: {
