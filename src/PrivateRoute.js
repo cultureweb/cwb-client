@@ -7,25 +7,28 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
     useEffect(() => {
         const checkToken = async () => {
-            const token = localStorage.getItem("token");
+           
             const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-access-token": token
+                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJmNWY0ZjllZS04ODExLTQyZTgtYTBlMC0yYTJkOTE2YjRhNzMiLCJpYXQiOjE1OTE1Mzg5NjcsImV4cCI6MTU5MTYyNTM2N30.2k9nB7aMmknQnU04K7HAXvsFawBnhvIA9kRcal8Mqnc"
                 }
             });
 
             const response = await data.json();
             console.log({ response })
-            //setItems(response)
+            if(response){
+                setAuthenticated(response.isAuthenticated)
+            }
         }
+        checkToken();
     }, [])
     
     
     
     const fakeAuth = {
-        isAuthenticated: true,
+        isAuthenticated: false,
         authenticate(cb) {
             this.isAuthenticated = true
             setTimeout(cb, 100)
