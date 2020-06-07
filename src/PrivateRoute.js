@@ -17,8 +17,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                     "x-access-token": token
                 }
             }).then(res => {
+                const responseJson = res.json();
                 if (res) {
-                setAuthenticated(res.isAuthenticated)
+                    setAuthenticated(responseJson.isAuthenticated)
                 }
             }).catch(err => {
                 setErrors(err)
