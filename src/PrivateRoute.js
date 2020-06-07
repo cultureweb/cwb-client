@@ -1,3 +1,4 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
 import React, { useEffect, useState } from 'react';
 import { useToggle } from "react-use";
 import { Route, Redirect } from 'react-router-dom';
