@@ -7,7 +7,7 @@ function Nav() {
         color:"white",
         textDecoration:"none"
     }
-    c
+    
     return (
             <nav>
                 <Link style={navStyle} to="/"><h3>Logo</h3></Link>
