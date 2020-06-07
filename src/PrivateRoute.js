@@ -23,6 +23,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 }
             }).catch(err => {
                 setErrors(err)
+                console.log(errors)
             })
 
         //     const response = await data.json();
