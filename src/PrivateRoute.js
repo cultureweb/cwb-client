@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useToggle } from "react-use";
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...props }) => {
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    const [isAuthenticated, setAuthenticated] = useToggle(false);
+
+    useEffect(() => {
+        const checkToken = async () => {
+            const token = localStorage.getItem("token");
+            const data = await fetch('https://cwb-server.herokuapp.com/api/v1/auth-from-token', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": token
+                }
+            });
+
+            const response = await data.json();
+            console.log({ response })
+            //setItems(response)
+        }
+    }, [])
+    
+    
+    
     const fakeAuth = {
-        isAuthenticated: false,
+        isAuthenticated: true,
         authenticate(cb) {
             this.isAuthenticated = true
             setTimeout(cb, 100)
@@ -12,10 +34,10 @@ const PrivateRoute = ({ component: Component, ...props }) => {
 
     return (
         <Route
-            {...props}
-            render={innerPropss => ( 
+            {...rest}
+            render={props => ( 
                 fakeAuth.isAuthenticated === true
-                    ? <Component {...innerPropss} />
+                    ? <Component {...props} />
                     : <Redirect to='/login' />
         )} />
             
