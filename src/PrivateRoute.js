@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route } from 'react-router-dom';
-import auth from "./pages/Login/Auth";
+//import auth from "./pages/Login/Auth";
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -33,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         <Route
             {...rest}
             render={props => {
-                if (isAuthenticated) {
+                if (isAuth) {
                     console.log("if isAuthenticated")
                     return <Component {...props} />;
                 }
